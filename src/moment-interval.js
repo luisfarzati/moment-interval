@@ -13,8 +13,8 @@ require('./moment-duration');
         throw Error('Not an ISO 8601 interval string: "' + isoString + '"');
       }
 
-      var start = isoString[0].match(iso8601) ? moment.duration.fromISO(isoString[0]) : moment(isoString[0]);
-      var end = isoString[1].match(iso8601) ? moment.duration.fromISO(isoString[1]) : moment(isoString[1]);
+      var start = isoString[0].match(iso8601) ? moment.duration.fromISO(isoString[0]) : moment(isoString[0] || undefined);
+      var end = isoString[1].match(iso8601) ? moment.duration.fromISO(isoString[1]) : moment(isoString[1] || undefined);
 
       if (moment.isDuration(start) && moment.isDuration(end)) {
         throw Error('Invalid format; both interval parts are durations: "' + isoString + '"');
@@ -28,22 +28,24 @@ require('./moment-duration');
           return moment.isDuration(end) ? moment(start).add(end) : end;
         },
         diff: function () {
-          return this.start().diff.apply(this.start(), arguments.unshift(this.end));
+          [].unshift.call(arguments, this.end());
+          return this.start().diff.apply(this.start(), arguments);
         }
       };
     }
     else {
       return {
         start: function () {
-          return moment(start);
+          return moment(first);
         },
         end: function () {
-          return moment(end);
+          return moment(second);
         },
         diff: function () {
-          return this.start().diff.apply(this.start(), arguments.unshift(this.end));
+          [].unshift.call(arguments, this.end());
+          return this.start().diff.apply(this.start(), arguments);
         }
-      }
+      };
     }
   };
 }(moment));
