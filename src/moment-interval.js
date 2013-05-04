@@ -1,7 +1,9 @@
-var moment = require('moment');
-require('./moment-duration');
+(function () {
+  var moment = (typeof require === 'undefined') ? this.moment : require('moment');
+  if (typeof require !== 'undefined') {
+    require('./moment-duration');
+  }
 
-(function (moment) {
   var iso8601 = '^P(?:([0-9]+W)|([0-9]+Y)?([0-9]+M)?([0-9]+D)?(?:T([0-9]+H)?([0-9]+M)?([0-9]+S)?([0-9]+Z)?)?)$';
   var params = ['weeks', 'years', 'months', 'days', 'hours', 'minutes', 'seconds', 'milliseconds'];
 
@@ -10,14 +12,14 @@ require('./moment-duration');
       // treat as a single duration string
       var isoString = first.split('/');
       if (isoString.length < 2) {
-        throw Error('Not an ISO 8601 interval string: "' + isoString + '"');
+        throw new Error('Not an ISO 8601 interval string: "' + isoString + '"');
       }
 
       var start = isoString[0].match(iso8601) ? moment.duration.fromISO(isoString[0]) : moment(isoString[0] || undefined);
       var end = isoString[1].match(iso8601) ? moment.duration.fromISO(isoString[1]) : moment(isoString[1] || undefined);
 
       if (moment.isDuration(start) && moment.isDuration(end)) {
-        throw Error('Invalid format; both interval parts are durations: "' + isoString + '"');
+        throw new Error('Invalid format; both interval parts are durations: "' + isoString + '"');
       }
 
       return {
@@ -48,4 +50,4 @@ require('./moment-duration');
       };
     }
   };
-}(moment));
+}(this));

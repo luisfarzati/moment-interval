@@ -1,15 +1,15 @@
 {
   "name": "moment-interval",
-  "description": "ISO 8601 Time intervals for Moment.js",
+  "description": "ISO 8601 duration and time interval support for Moment.js",
   "author": "Luis Farzati <lfarzati@gmail.com>",
   "homepage": "https://github.com/luisfarzati/moment-interval",
   "bugs": "https://github.com/luisfarzati/moment-interval/issues",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "engines": {
     "node": "*"
   },
   "dependencies": {
-    "moment": ">=1.4.0"
+    "moment": "2.0.0"
   },
   "devDependencies": {
     "nodeunit": "latest"

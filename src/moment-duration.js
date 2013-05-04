@@ -1,6 +1,5 @@
-var moment = require('moment');
-
-(function (moment) {
+(function () {
+  var moment = (typeof require === 'undefined') ? this.moment : require('moment');
   var iso8601 = '^P(?:([0-9]+W)|([0-9]+Y)?([0-9]+M)?([0-9]+D)?(?:T([0-9]+H)?([0-9]+M)?([0-9]+S)?([0-9]+Z)?)?)$';
   var params = ['weeks', 'years', 'months', 'days', 'hours', 'minutes', 'seconds', 'milliseconds'];
 
@@ -33,4 +32,4 @@ var moment = require('moment');
         append(duration.seconds(), 'S') +
         append(duration.milliseconds(), 'Z');
   };
-}(moment));
+}(this));
