@@ -1,0 +1,26 @@
+{
+  "name": "moment-interval",
+  "description": "ISO 8601 Time intervals for Moment.js",
+  "author": "Luis Farzati <lfarzati@gmail.com>",
+  "homepage": "https://github.com/luisfarzati/moment-interval",
+  "bugs": "https://github.com/luisfarzati/moment-interval/issues",
+  "main": "./src/moment-interval",
+  "version": "0.0.2",
+  "engines": {
+    "node": "*"
+  },
+  "dependencies": {
+    "moment": ">=1.4.0"
+  },
+  "devDependencies": {
+    "nodeunit": "latest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://git@github.com/luisfarzati/moment-interval.git"
+  },
+  "license": {
+    "type": "MIT",
+    "url": "https://github.com/luisfarzati/moment-interval/blob/master/LICENSE"
+  }
+}
