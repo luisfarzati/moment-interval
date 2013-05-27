@@ -4,7 +4,7 @@
   "author": "Luis Farzati <lfarzati@gmail.com>",
   "homepage": "https://github.com/luisfarzati/moment-interval",
   "bugs": "https://github.com/luisfarzati/moment-interval/issues",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "engines": {
     "node": "*"
   },
