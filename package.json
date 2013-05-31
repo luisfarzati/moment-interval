@@ -1,19 +1,25 @@
 {
   "name": "moment-interval",
-  "description": "ISO 8601 time interval support for Moment.js",
+  "description": "Time intervals for Moment.js",
   "author": "Luis Farzati <lfarzati@gmail.com>",
   "homepage": "https://github.com/luisfarzati/moment-interval",
   "bugs": "https://github.com/luisfarzati/moment-interval/issues",
-  "version": "0.0.6",
+  "version": "0.2.0",
   "engines": {
     "node": "*"
   },
   "dependencies": {
-    "moment": "2.0.0",
-    "moment-duration": "latest"
+    "moment": "2.0.0"
   },
   "devDependencies": {
-    "nodeunit": "latest"
+    "grunt": "latest",
+    "nodeunit": "latest",
+    "grunt-contrib-jshint": "latest",
+    "grunt-contrib-nodeunit": "latest",
+    "grunt-contrib-watch": "latest"
+  },
+  "scripts": {
+    "test": "grunt"
   },
   "repository": {
     "type": "git",
