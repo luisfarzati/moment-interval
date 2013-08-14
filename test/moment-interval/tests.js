@@ -3,16 +3,15 @@ require("../../src/moment-interval");
 
 exports.duration = {
     "moment.duration(String)" : function (test) {
-        test.expect(9);
+        test.expect(8);
         test.equal(+moment.duration('P1D'), +moment.duration(1, 'day'), "P1D");
         test.equal(+moment.duration('P1W'), +moment.duration(1, 'week'), "P1W");
         test.equal(+moment.duration('P1M'), +moment.duration(1, 'month'), "P1M");
         test.equal(+moment.duration('P1Y'), +moment.duration(1, 'year'), "P1Y");
-        test.equal(+moment.duration('PT1Z'), +moment.duration(1, 'millisecond'), "PT1Z");
         test.equal(+moment.duration('PT1S'), +moment.duration(1, 'second'), "PT1S");
         test.equal(+moment.duration('PT1M'), +moment.duration(1, 'minute'), "PT1M");
         test.equal(+moment.duration('PT1H'), +moment.duration(1, 'hour'), "PT1H");
-        test.equal(+moment.duration('P1Y1M1DT1H1M1S1Z'), +moment.duration({days:1,months:1,years:1,hours:1,minutes:1,seconds:1,milliseconds:1}), "PT1S");
+        test.equal(+moment.duration('P1Y1M1DT1H1M1.001S'), +moment.duration({days:1,months:1,years:1,hours:1,minutes:1,seconds:1,milliseconds:1}), "PT1S");
         test.done();
     },
 
@@ -22,11 +21,11 @@ exports.duration = {
         test.equal(moment.duration(1, 'week').toISOString(), "P1W", "1 week to ISO string");
         test.equal(moment.duration(1, 'month').toISOString(), "P1M", "1 month to ISO string");
         test.equal(moment.duration(1, 'year').toISOString(), "P1Y", "1 year to ISO string");
-        test.equal(moment.duration(1, 'millisecond').toISOString(), "PT1Z", "1 millisecond to ISO string");
+        test.equal(moment.duration(1, 'millisecond').toISOString(), "PT0.001S", "1 millisecond to ISO string");
         test.equal(moment.duration(1, 'second').toISOString(), "PT1S", "1 second to ISO string");
         test.equal(moment.duration(1, 'minute').toISOString(), "PT1M", "1 minute to ISO string");
         test.equal(moment.duration(1, 'hour').toISOString(), "PT1H", "1 hour to ISO string");
-        test.equal(moment.duration({days:1,months:1,years:1,hours:1,minutes:1,seconds:1,milliseconds:1}).toISOString(), "P1Y1M1DT1H1M1S1Z", "all together now");
+        test.equal(moment.duration({days:1,months:1,years:1,hours:1,minutes:1,seconds:1,milliseconds:1}).toISOString(), "P1Y1M1DT1H1M1.001S", "all together now");
         test.done();
     }
 };
@@ -41,7 +40,7 @@ exports.create = {
 
         test.expect(9);
 
-        var startEnd = start + '/' + end;        
+        var startEnd = start + '/' + end;
         test.equal(+moment.interval(startEnd).start(), +mstart, "start() moment with start/end");
         test.equal(+moment.interval(startEnd).end(), +mend, "end() moment with start/end");
         test.equal(+moment.interval(startEnd).period(), +period, "period() duration with start/end");
