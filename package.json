@@ -5,14 +5,16 @@
   "homepage": "https://github.com/luisfarzati/moment-interval",
   "bugs": "https://github.com/luisfarzati/moment-interval/issues",
   "version": "0.2.0",
+  "main": "index.js",
   "engines": {
     "node": "*"
   },
   "dependencies": {
-    "moment": "2.0.0"
+    "moment": "~2.5"
   },
   "devDependencies": {
     "grunt": "latest",
+    "grunt-cli": "latest",
     "nodeunit": "latest",
     "grunt-contrib-jshint": "latest",
     "grunt-contrib-nodeunit": "latest",
