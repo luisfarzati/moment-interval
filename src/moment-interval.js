@@ -1,6 +1,26 @@
-(function () {
-    /* nodejs */
-    var moment = (typeof require === 'undefined') ? this.moment : require('moment');
+(function (root, factory) {
+  'use strict';
+  if (typeof define === 'function' && define.amd) {
+        // AMD. Register as an anonymous module.
+        define(['moment'], factory);
+    } else if (typeof exports === 'object') {
+        // Node. Does not work with strict CommonJS, but
+        // only CommonJS-like environments that support module.exports,
+        // like Node.
+        module.exports = factory(require('moment'));
+    } else {
+        // Browser globals (root is window)
+        root.returnExports = factory(root.moment);
+    }
+}(this, function (moment) {
+    'use strict';
+
+    if(typeof exports !== 'undefined'){
+        if (typeof module !== 'undefined' && module.exports) {
+            exports = module.exports = moment;
+        }
+        exports.moment = moment;
+    }
 
     var iso8601 = /^P(?:(\d+(?:[\.,]\d{0,3})?W)|(\d+(?:[\.,]\d{0,3})?Y)?(\d+(?:[\.,]\d{0,3})?M)?(\d+(?:[\.,]\d{0,3})?D)?(?:T(\d+(?:[\.,]\d{0,3})?H)?(\d+(?:[\.,]\d{0,3})?M)?(\d+(?:[\.,]\d{0,3})?S)?)?)$/;
 
@@ -27,7 +47,7 @@
             minutes: parseFloat(matches[6], 10),
             seconds: parseFloat(matches[7], 10),
             milliseconds: parseFloat(matches[8], 10)
-        }
+        };
         return moment.duration(d);
     };
 
@@ -46,13 +66,14 @@
             ((Math.abs(this.hours()) + Math.abs(this.minutes()) + Math.abs(this.seconds()) + Math.abs(this.milliseconds()) > 0) ? 'T' : '') +
             append(Math.abs(this.hours()), 'H') +
             append(Math.abs(this.minutes()), 'M') +
-            append(Math.abs(this.seconds())+Math.abs(this.milliseconds())/1000, 'S')
+            append(Math.abs(this.seconds())+Math.abs(this.milliseconds())/1000, 'S');
     };
 
     // http://stackoverflow.com/q/1353684/1206952
     function isValidDate(d) {
-        if ( Object.prototype.toString.call(d) !== "[object Date]" )
+        if ( Object.prototype.toString.call(d) !== "[object Date]" ){
             return false;
+        }
         return !isNaN(d.getTime());
     }
 
@@ -68,12 +89,12 @@
      * Checks if the specified object is an Interval object.
      */
     moment.isInterval = function (interval) {
-        return typeof interval.start === 'function'
-            && typeof interval.end === 'function'
-            && typeof interval.period === 'function'
-            && moment.isMoment(interval.start())
-            && moment.isMoment(interval.end())
-            && moment.isDuration(interval.period());
+        return typeof interval.start === 'function' &&
+            typeof interval.end === 'function' &&
+            typeof interval.period === 'function' &&
+            moment.isMoment(interval.start()) &&
+            moment.isMoment(interval.end()) &&
+            moment.isDuration(interval.period());
     };
 
     /**
@@ -247,4 +268,6 @@
             }
         };
     };
-}(this));
+
+    return moment;
+}));
