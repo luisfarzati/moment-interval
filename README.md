@@ -204,3 +204,6 @@ moment-interval is freely distributable under the terms of the MIT license.
 [iso8601]: http://en.wikipedia.org/wiki/ISO_8601
 [iso8601i]: http://en.wikipedia.org/wiki/ISO_8601#Time_intervals
 [iso8601d]: http://en.wikipedia.org/wiki/ISO_8601#Durations
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/luisfarzati/moment-interval/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
