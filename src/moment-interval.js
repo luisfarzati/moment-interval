@@ -265,6 +265,9 @@
                     this.forward(duration);
                 }
                 return this;
+            },
+            toISOString: function () {
+              return this.start().toISOString() + '/' + this.end().toISOString();
             }
         };
     };
