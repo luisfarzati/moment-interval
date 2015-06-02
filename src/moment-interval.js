@@ -10,7 +10,7 @@
         module.exports = factory(require('moment'));
     } else {
         // Browser globals (root is window)
-        root.returnExports = factory(root.moment);
+        root.momentInterval = factory(root.moment);
     }
 }(this, function (moment) {
     'use strict';
